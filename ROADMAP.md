@@ -57,7 +57,7 @@
   transaction fixtures before tagging `0.2.0-alpha`.
 - [x] Verify generated package metadata and compile a consumer from a staged
   install prefix.
-- [ ] Pass the automated clean-switch install on both OCaml 5.2 and the
+- [x] Pass the automated clean-switch install on both OCaml 5.2 and the
   minimum supported OCaml 4.14 compiler.
 
 ## 0.3 — enclave and wallet integration

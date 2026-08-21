@@ -9,7 +9,8 @@ release; the Git tag uses the more familiar hyphenated spelling.
 - All generated opam files contain the version from `dune-project`.
 - A staged install contains every public package and can compile and execute a
   consumer outside the source tree.
-- A fresh OCaml 5.2 switch can solve, build, test, and install the package set.
+- Fresh OCaml 5.2 and 4.14 switches can solve, build, test, and install the
+  package set.
 - The core and Mirage package closure contains no Unix runtime dependency.
 - The unit, fault-injection, and digest-pinned Geth/Reth matrices pass.
 - The source tree contains no uncommitted generated metadata.

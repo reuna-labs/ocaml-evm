@@ -20,6 +20,8 @@
   valid legacy/EIP-2930/EIP-1559 and malformed typed envelopes.
 - Add staged-install and clean-switch release checks, plus an explicit
   WebSocket backend decision covering CSPRNG injection and authenticated TLS.
+- Validate the complete package set in isolated OCaml 5.2 and minimum-version
+  OCaml 4.14.2 switches.
 
 ## 0.1.0
 
