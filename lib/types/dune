@@ -1,0 +1,4 @@
+(library
+ (name evm_types)
+ (public_name evm-types)
+ (libraries zarith digestif))

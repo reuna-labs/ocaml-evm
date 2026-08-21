@@ -1,0 +1,11 @@
+(library
+ (name evm)
+ (public_name evm)
+ (modules evm)
+ (libraries
+  (re_export evm-types)
+  (re_export evm-abi)
+  (re_export evm-eip712)
+  (re_export evm-crypto)
+  (re_export evm-transaction)
+  (re_export evm-rpc)))

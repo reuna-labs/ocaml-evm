@@ -1,0 +1,4 @@
+(library
+ (name evm_abi)
+ (public_name evm-abi)
+ (libraries evm-types zarith digestif yojson))

@@ -1,0 +1,52 @@
+name: ocaml-evm-conformance
+
+services:
+  geth:
+    image: ethereum/client-go:v1.17.4@sha256:dcb9a1fbb135e9c7afe708662f1c87f95646e710971cbff45c1bcc6351c82e08
+    entrypoint: ["/bin/sh", "-ec"]
+    command:
+      - |
+        mkdir -p /data/keystore
+        if ! geth account list --datadir /data 2>&1 | grep -qi f39fd6e51aad88f6f4ce6ab8827279cfffb92266; then
+          geth account import --datadir /data --password /fixtures/password.txt /fixtures/dev-key.hex
+        fi
+        exec geth \
+          --datadir /data \
+          --dev \
+          --dev.period 1 \
+          --networkid 1337 \
+          --http \
+          --http.addr 0.0.0.0 \
+          --http.port 8545 \
+          --http.api eth,net,web3 \
+          --http.vhosts '*' \
+          --nodiscover \
+          --maxpeers 0
+    ports:
+      - "127.0.0.1:18545:8545"
+    volumes:
+      - geth-data:/data
+      - ./fixtures:/fixtures:ro
+
+  reth:
+    image: ghcr.io/paradigmxyz/reth:v2.2.0@sha256:505fca5e87d6411fc7117f29a87e42787ec2eebe8225506e9ddb4759ae2ba5cc
+    command:
+      - node
+      - --dev
+      - --dev.block-time
+      - 1s
+      - --http
+      - --http.addr
+      - 0.0.0.0
+      - --http.port
+      - "8545"
+      - --http.api
+      - eth,net,web3
+    ports:
+      - "127.0.0.1:28545:8545"
+    volumes:
+      - reth-data:/root/.local/share/reth
+
+volumes:
+  geth-data:
+  reth-data:

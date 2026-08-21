@@ -1,0 +1,4 @@
+(library
+ (name evm_rpc_unix)
+ (public_name evm-rpc-unix)
+ (libraries evm-rpc evm-rpc-cohttp lwt uri http cohttp-lwt cohttp-lwt-unix))

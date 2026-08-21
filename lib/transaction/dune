@@ -1,0 +1,5 @@
+(library
+ (name evm_transaction)
+ (public_name evm-transaction)
+ (private_modules evm_rlp)
+ (libraries evm-types evm-crypto zarith digestif))

@@ -1,0 +1,13 @@
+(library
+ (name evm_rpc_mirage)
+ (public_name evm-rpc-mirage)
+ (libraries
+  evm-rpc
+  evm-rpc-cohttp
+  lwt
+  uri
+  http
+  cohttp-lwt
+  conduit-mirage
+  x509
+  cohttp-mirage))

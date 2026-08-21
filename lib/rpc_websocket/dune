@@ -1,0 +1,4 @@
+(library
+ (name evm_rpc_websocket)
+ (public_name evm-rpc-websocket)
+ (libraries evm-rpc yojson))

@@ -1,0 +1,4 @@
+(library
+ (name evm_rpc)
+ (public_name evm-rpc)
+ (libraries evm-types evm-abi evm-transaction zarith yojson))

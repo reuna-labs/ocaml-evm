@@ -1,0 +1,27 @@
+(executable
+ (name rpc_conformance)
+ (libraries
+  evm-types
+  evm-crypto
+  evm-transaction
+  evm-rpc
+  evm-rpc-unix
+  unix
+  lwt
+  lwt.unix
+  uri
+  yojson
+  zarith))
+
+(executable
+ (name fault_proxy)
+ (libraries
+  unix
+  lwt
+  lwt.unix
+  uri
+  http
+  cohttp
+  cohttp-lwt
+  cohttp-lwt-unix
+  conduit-lwt-unix))

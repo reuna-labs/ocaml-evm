@@ -1,0 +1,47 @@
+(test
+ (name test_evm)
+ (package evm)
+ (deps fixtures/transaction_vectors.json)
+ (libraries evm alcotest qcheck-core qcheck-alcotest yojson zarith digestif))
+
+(test
+ (name test_rpc)
+ (package evm-rpc)
+ (libraries
+  evm-types
+  evm-abi
+  evm-rpc
+  alcotest
+  qcheck-core
+  qcheck-alcotest
+  yojson
+  zarith))
+
+(test
+ (name test_rpc_unix)
+ (package evm-rpc-unix)
+ (libraries evm-rpc-unix alcotest uri))
+
+(test
+ (name test_rpc_websocket)
+ (package evm-rpc-websocket)
+ (libraries evm-types evm-rpc evm-rpc-websocket alcotest yojson zarith))
+
+(test
+ (name test_rpc_faults)
+ (package evm-rpc-unix)
+ (libraries
+  evm-types
+  evm-rpc
+  evm-rpc-unix
+  alcotest
+  unix
+  lwt
+  lwt.unix
+  uri
+  http
+  cohttp
+  cohttp-lwt
+  cohttp-lwt-unix
+  conduit-lwt-unix
+  zarith))

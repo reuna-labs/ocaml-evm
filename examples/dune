@@ -1,0 +1,7 @@
+(executable
+ (name sign_eip1559)
+ (libraries evm))
+
+(executable
+ (name chain_id)
+ (libraries evm-types evm-rpc evm-rpc-unix lwt.unix uri))

@@ -1,0 +1,9 @@
+(library
+ (name evm_crypto)
+ (public_name evm-crypto)
+ (libraries
+  evm-types
+  zarith
+  digestif
+  mirage-crypto-ec
+  mirage-crypto-blockchain))

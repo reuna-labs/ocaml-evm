@@ -1,0 +1,4 @@
+(library
+ (name evm_eip712)
+ (public_name evm-eip712)
+ (libraries evm-types evm-abi zarith digestif yojson))

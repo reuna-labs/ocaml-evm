@@ -1,0 +1,44 @@
+{
+  "provenance": {
+    "ethereumTestsCommit": "c67e485ff8b5be9abc8ad15345ec21aa22e290d9",
+    "ethereumTests": "https://github.com/ethereum/tests/tree/c67e485ff8b5be9abc8ad15345ec21aa22e290d9/TransactionTests",
+    "eip155": "https://eips.ethereum.org/EIPS/eip-155"
+  },
+  "valid": [
+    {
+      "name": "EIP-155 official replay-protected example",
+      "kind": "legacy",
+      "source": "EIP-155 Example",
+      "raw": "0xf86c098504a817c800825208943535353535353535353535353535353535353535880de0b6b3a76400008025a028ef61340bd939bc2195fe537567866003e1a15d3c71ff63e1590620aa636276a067cbe9d8997f761aecb703304b3800ccf555c9f3dc64214b297fb1966a3b6d83",
+      "signingHash": "0xdaf5a779ae972f972197303d7b574746c7ef83eadac0f2791ad23db92e4c8e53"
+    },
+    {
+      "name": "ethereum/tests EIP-2930 32-byte storage key",
+      "kind": "type1",
+      "source": "TransactionTests/ttEIP2930/accessListStorage32Bytes.json",
+      "raw": "0x01f89a018001826a4094095e7baea6a6c7c4c2dfeb977efac326af552d878080f838f794a95e7baea6a6c7c4c2dfeb977efac326af552d87e1a0ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff80a05cbd172231fc0735e0fb994dd5b1a4939170a260b36f0427a8a80866b063b948a07c230f7f578dd61785c93361b9871c0706ebfa6d06e3f4491dc9558c5202ed36",
+      "hash": "0xb4f8b14a7aaf85ec2f76be9fbe4155deae1f87b2da95af73be3c27ed8d4c8cb7",
+      "sender": "0xebe76799923fd62804659fb00b4f0f1a94c0eb1e"
+    },
+    {
+      "name": "ethereum/tests EIP-1559 gas-price product boundary",
+      "kind": "type2",
+      "source": "TransactionTests/ttEIP1559/GasLimitPriceProductOverflowtMinusOne.json",
+      "raw": "0x02f885018084773594009f02ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff82520894095e7baea6a6c7c4c2dfeb977efac326af552d878080c080a05cbd172231fc0735e0fb994dd5b1a4939170a260b36f0427a8a80866b063b948a07c230f7f578dd61785c93361b9871c0706ebfa6d06e3f4491dc9558c5202ed36",
+      "hash": "0xdad8bff3ecfcf95169b1d5625b47f3372be795802bc4fe570991cf332f609334",
+      "sender": "0xae2aec498d20869d441eaaf708fb1e375ae1787d"
+    }
+  ],
+  "invalid": [
+    {
+      "name": "ethereum/tests short EIP-2930 storage key",
+      "source": "TransactionTests/ttEIP2930/accessListStorage0x0001.json",
+      "raw": "0x01f87b018001826a4094095e7baea6a6c7c4c2dfeb977efac326af552d878080dad994a95e7baea6a6c7c4c2dfeb977efac326af552d87c382000180a05cbd172231fc0735e0fb994dd5b1a4939170a260b36f0427a8a80866b063b948a07c230f7f578dd61785c93361b9871c0706ebfa6d06e3f4491dc9558c5202ed36"
+    },
+    {
+      "name": "ethereum/tests leading-zero EIP-1559 max fee",
+      "source": "TransactionTests/ttEIP1559/maxFeePerGas00prefix.json",
+      "raw": "0x02f88701808477359400a100ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff82520894095e7baea6a6c7c4c2dfeb977efac326af552d878080c080a05cbd172231fc0735e0fb994dd5b1a4939170a260b36f0427a8a80866b063b948a07c230f7f578dd61785c93361b9871c0706ebfa6d06e3f4491dc9558c5202ed36"
+    }
+  ]
+}
