@@ -29,5 +29,6 @@ done
 opam install --switch="$switch_dir" "$project_root" --deps-only --with-test \
   --yes
 opam install --switch="$switch_dir" "$project_root" --with-test --yes
-opam exec --switch="$switch_dir" -- dune runtest --root "$project_root" --force
+EVM_ENABLE_NETWORK_TESTS=1 opam exec --switch="$switch_dir" -- \
+  dune runtest --root "$project_root" --force
 printf '%s\n' "Clean-switch package install passed with $ocaml_package"

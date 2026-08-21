@@ -42,6 +42,11 @@ The direct `ocamlfind` invocation selects `digestif.c` before `evm` so the
 virtual implementation is linked in dependency order; Dune consumers select
 Digestif's default implementation automatically.
 
+The localhost fault-injection test is disabled during opam's sandboxed
+`@runtest` phase because that sandbox forbids `bind(2)`. Both release scripts
+run it explicitly afterward with `EVM_ENABLE_NETWORK_TESTS=1`; it is therefore
+still mandatory for a passing release gate.
+
 ## Clean-switch gate
 
 The following command creates an isolated external switch in `/tmp`, pins only

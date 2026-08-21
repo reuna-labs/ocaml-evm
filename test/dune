@@ -30,6 +30,8 @@
 (test
  (name test_rpc_faults)
  (package evm-rpc-unix)
+ (enabled_if
+  (= %{env:EVM_ENABLE_NETWORK_TESTS=0} 1))
  (libraries
   evm-types
   evm-rpc

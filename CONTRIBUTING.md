@@ -21,6 +21,11 @@ Release candidates must also pass `./tools/check-clean-switch.sh`; see
 [RELEASING.md](RELEASING.md) for compiler selection and the temporary-switch
 lifecycle.
 
+The HTTP fault test binds an ephemeral localhost port and is enabled by the
+release scripts with `EVM_ENABLE_NETWORK_TESTS=1`. Set the same variable when
+running that test directly; opam package builds leave it disabled because
+their build sandbox denies socket binding.
+
 The matrix downloads Geth and Reth images, binds localhost ports 18545 and
 28545, and removes its containers and named volumes on exit. Its fixture keys
 are public development keys and must never be reused on a real chain.

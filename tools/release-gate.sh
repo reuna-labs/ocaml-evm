@@ -6,7 +6,7 @@ cd "$project_root"
 
 opam exec -- dune fmt
 opam exec -- dune build @all @install
-opam exec -- dune runtest --force
+EVM_ENABLE_NETWORK_TESTS=1 opam exec -- dune runtest --force
 ./tools/check-mirage-safety.sh
 ./tools/check-package-install.sh
 opam lint ./*.opam
