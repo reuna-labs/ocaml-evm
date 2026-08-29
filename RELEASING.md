@@ -60,7 +60,7 @@ dependencies, runs the tests, and removes the switch on exit:
 
 Set `EVM_OCAML_PACKAGE=ocaml-base-compiler.4.14.2` to exercise the minimum
 supported compiler. Set `MIRAGE_CRYPTO_SOURCE` if the worktree is not at
-`../ocaml/mirage-crypto`.
+`../../ports/ocaml/mirage-crypto`.
 
 ## Tagging and publishing
 

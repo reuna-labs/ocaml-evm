@@ -2,8 +2,8 @@
 set -eu
 
 project_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
-mirage_crypto_source=${MIRAGE_CRYPTO_SOURCE:-"$project_root/../ocaml/mirage-crypto"}
-ocaml_package=${EVM_OCAML_PACKAGE:-ocaml-base-compiler.5.2.0}
+mirage_crypto_source=${MIRAGE_CRYPTO_SOURCE:-"$project_root/../../ports/ocaml/mirage-crypto"}
+ocaml_package=${EVM_OCAML_PACKAGE:-ocaml-base-compiler.5.2.1}
 switch_dir=$(mktemp -d /tmp/ocaml-evm-switch.XXXXXX)
 rmdir "$switch_dir"
 

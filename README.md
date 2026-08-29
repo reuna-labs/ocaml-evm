@@ -42,11 +42,11 @@ blockchain packages from the local Mirage-crypto worktree; until those APIs are
 released, pin the five exact-version packages in that dependency closure:
 
 ```sh
-opam pin add mirage-crypto.dev ../ocaml/mirage-crypto
-opam pin add mirage-crypto-rng.dev ../ocaml/mirage-crypto
-opam pin add mirage-crypto-ec.dev ../ocaml/mirage-crypto
-opam pin add mirage-crypto-pk.dev ../ocaml/mirage-crypto
-opam pin add mirage-crypto-blockchain.dev ../ocaml/mirage-crypto
+opam pin add mirage-crypto.dev ../../ports/ocaml/mirage-crypto
+opam pin add mirage-crypto-rng.dev ../../ports/ocaml/mirage-crypto
+opam pin add mirage-crypto-ec.dev ../../ports/ocaml/mirage-crypto
+opam pin add mirage-crypto-pk.dev ../../ports/ocaml/mirage-crypto
+opam pin add mirage-crypto-blockchain.dev ../../ports/ocaml/mirage-crypto
 opam install . --deps-only --with-test
 dune runtest
 ./tools/check-mirage-safety.sh
