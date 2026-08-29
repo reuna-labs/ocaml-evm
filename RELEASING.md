@@ -16,11 +16,13 @@ release; the Git tag uses the more familiar hyphenated spelling.
 - The source tree contains no uncommitted generated metadata.
 
 The secp256k1 and blockchain APIs currently come from the adjacent
-Mirage-crypto worktree. The clean-switch check pins its core, RNG, EC, PK, and
-blockchain packages to one explicit `dev` version so their exact-version
-constraints remain coherent. This is the only non-opam-repository input
-accepted by the check. It must be replaced by released package constraints
-before a final `0.2.0` release.
+Mirage-crypto worktree. The clean-switch check pins its core, RNG, EC, PK,
+lean blockchain-core and blockchain packages to one explicit `dev` version so
+their exact-version constraints remain coherent. Digestif is pinned from the
+adjacent 1.4 staging worktree because the blockchain package uses its wider
+Keccak family. These are the only non-opam-repository inputs accepted by the
+check. They must be replaced by released package constraints before a final
+`0.2.0` release.
 
 ## Local gate
 
@@ -60,7 +62,8 @@ dependencies, runs the tests, and removes the switch on exit:
 
 Set `EVM_OCAML_PACKAGE=ocaml-base-compiler.4.14.2` to exercise the minimum
 supported compiler. Set `MIRAGE_CRYPTO_SOURCE` if the worktree is not at
-`../../ports/ocaml/mirage-crypto`.
+`../../ports/ocaml/mirage-crypto`, and `DIGESTIF_SOURCE` if it is not at
+`../../ports/ocaml/digestif`.
 
 ## Tagging and publishing
 
