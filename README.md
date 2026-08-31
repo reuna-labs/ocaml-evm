@@ -8,8 +8,18 @@ EIP-712 structured-data hashing, recoverable secp256k1 signatures, and legacy
 plus typed transaction envelopes through EIP-7702. The core performs no I/O
 and never reaches ambient randomness.
 
-Status: `0.2.0~alpha1` candidate, under development and unaudited. Do not use
-it to control funds yet.
+Status: public, unaudited `v0.2.0-alpha1`. Do not use it to control funds yet.
+
+## Install
+
+```sh
+opam repository add reuna https://github.com/reuna-labs/opam-repository.git
+opam update
+opam install evm.0.2.0~alpha1
+```
+
+Add `evm-rpc-unix.0.2.0~alpha1` for the hosted HTTP adapter. These packages
+resolve against checksum-pinned public archives without path or private pins.
 
 ## Packages
 
@@ -37,18 +47,14 @@ it to control funds yet.
 
 ## Build and test
 
-The project currently targets OCaml 4.14 or newer. It uses the secp256k1 and
-blockchain packages from the local Mirage-crypto worktree; until those APIs are
-released, pin the five exact-version packages in that dependency closure:
+The project targets OCaml 4.14 or newer. A source checkout resolves the required
+secp256k1 and blockchain packages from the public Reuna overlay:
 
 ```sh
-opam pin add mirage-crypto.dev ../../ports/ocaml/mirage-crypto
-opam pin add mirage-crypto-rng.dev ../../ports/ocaml/mirage-crypto
-opam pin add mirage-crypto-ec.dev ../../ports/ocaml/mirage-crypto
-opam pin add mirage-crypto-pk.dev ../../ports/ocaml/mirage-crypto
-opam pin add mirage-crypto-blockchain.dev ../../ports/ocaml/mirage-crypto
+opam repository add reuna https://github.com/reuna-labs/opam-repository.git
+opam update
 opam install . --deps-only --with-test
-dune runtest
+opam exec -- dune runtest
 ./tools/check-mirage-safety.sh
 ```
 
