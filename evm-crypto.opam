@@ -13,8 +13,7 @@ depends: [
   "evm-types" {= version}
   "zarith" {>= "1.13"}
   "digestif" {>= "1.2.0"}
-  "mirage-crypto-ec"
-  "mirage-crypto-blockchain"
+  "mirage-crypto-secp256k1"
   "odoc" {with-doc}
 ]
 build: [
@@ -32,3 +31,12 @@ build: [
   ]
 ]
 dev-repo: "git+https://github.com/reuna-labs/ocaml-evm.git"
+# Development pins for the coordinated native crypto source.
+# Pins select versions; optional packages are installed only when required.
+pin-depends: [
+  [ "mirage-crypto.2.4.0" "git+https://github.com/reuna-labs/mirage-crypto.git#edeae749daa6f8eafb73446e68e654d00794e898" ]
+  [ "mirage-crypto-rng.2.4.0" "git+https://github.com/reuna-labs/mirage-crypto.git#edeae749daa6f8eafb73446e68e654d00794e898" ]
+  [ "mirage-crypto-secp256k1.2.4.0" "git+https://github.com/reuna-labs/mirage-crypto.git#edeae749daa6f8eafb73446e68e654d00794e898" ]
+  [ "mirage-crypto-pk.2.4.0" "git+https://github.com/reuna-labs/mirage-crypto.git#edeae749daa6f8eafb73446e68e654d00794e898" ]
+  [ "digestif.1.4.0" "git+https://github.com/reuna-labs/digestif.git#770f9c355bd5fd60ebf63027b66a51920906519f" ]
+]

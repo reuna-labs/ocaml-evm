@@ -2,17 +2,17 @@
 
 This project is unaudited. Do not use it to protect funds yet.
 
-The core has no filesystem, socket, clock, scheduler, or ambient-randomness
-dependency. This makes the same signing logic usable in a Unix process, a
+The core has no filesystem, socket, clock or scheduler dependency.
+Secret-key operations require an initialized Mirage RNG for context blinding. This makes the same signing logic usable in a Unix process, a
 MirageOS/Solo5 unikernel, or a confidential-computing enclave. It does not by
 itself provide isolation, attestation, rollback protection, policy, or secure
 key provisioning.
 
-Secret scalar multiplication and ECDSA signing go through
-`Mirage_crypto_ec.P256k1`. Public-key recovery uses
-`Mirage_crypto_blockchain.Secp256k1` only after signing, on the public digest and
-signature, to derive Ethereum's parity bit. The latter is a reference
-implementation and is not used with the private key.
+Secret scalar multiplication, recoverable ECDSA signing and public-key
+recovery go through `Mirage_crypto_secp256k1`, the minimal native binding to
+Bitcoin Core libsecp256k1. Each signing/key-generation context is blinded
+using fresh Mirage RNG output; a missing or unseeded RNG fails closed.
+This does not constitute a constant-time audit of the entire OCaml SDK.
 
 Signing requires a caller-provided 32-byte ECDSA nonce. It must be uniformly
 generated, independent of both key and message, kept secret, and never reused.

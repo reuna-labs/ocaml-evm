@@ -1,5 +1,6 @@
-(** Enclave-friendly secp256k1 signing. Secret-dependent curve operations use
-    [mirage-crypto-ec]; recovery uses the reference backend on public data. *)
+(** Native libsecp256k1 signing and recovery. Public derivation and signing
+    require an initialized Mirage RNG for independent context blinding.
+    Applications supply entropy; this library performs no OS I/O. *)
 
 type private_key
 type public_key
@@ -23,8 +24,8 @@ val sign_digest :
   Evm_types.Hash.t ->
   (Evm_types.Signature.t, error) result
 (** [nonce] is exactly 32 bytes of independent secret entropy in the scalar
-    range. Requiring it makes the entropy boundary explicit for unikernels and
-    enclaves and avoids deterministic-nonce side channels. *)
+    range. It must never be reused across messages. Context blinding also
+    requires an initialized Mirage RNG; it does not change the signature. *)
 
 val recover :
   Evm_types.Hash.t -> Evm_types.Signature.t -> (public_key, error) result

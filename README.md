@@ -6,7 +6,7 @@ unchanged in ordinary Unix programs and MirageOS/Solo5 unikernels.
 The first release contains validated wire types, the Ethereum Contract ABI,
 EIP-712 structured-data hashing, recoverable secp256k1 signatures, and legacy
 plus typed transaction envelopes through EIP-7702. The core performs no I/O
-and never reaches ambient randomness.
+and uses an initialized Mirage RNG for native signer-context blinding.
 
 Status: public, unaudited `v0.2.0-alpha1`. Do not use it to control funds yet.
 
@@ -20,6 +20,19 @@ opam install evm.0.2.0~alpha1
 
 Add `evm-rpc-unix.0.2.0~alpha1` for the hosted HTTP adapter. These packages
 resolve against checksum-pinned public archives without path or private pins.
+
+## Signer RNG initialization
+
+Initialize Mirage RNG from the deployment's trusted entropy source before
+secp256k1 public-key derivation or signing. The native libsecp256k1 backend
+uses fresh randomness to blind each secret-key context. RFC 6979 signature
+bytes remain deterministic; context blinding does not change them. Missing
+or unseeded generators fail closed through Mirage RNG exceptions.
+
+Hosted entry points may initialize `Mirage_crypto_rng_unix`; Mirage/Solo5
+applications must supply their platform RNG integration. The crypto libraries
+depend on `mirage-crypto-rng`, without requiring its Unix adapter. Fixed test
+seeds are only for reproducible tests and must not be used in deployments.
 
 ## Packages
 
@@ -41,7 +54,7 @@ resolve against checksum-pinned public archives without path or private pins.
 - Parsers return `result` and reject non-canonical input.
 - Signed and unsigned transactions are different types.
 - Secret-key operations go through one cryptographic backend.
-- No `Unix`, scheduler, sockets, filesystem or global RNG below adapters.
+- No `Unix`, scheduler, sockets or filesystem below adapters. Signers use Mirage RNG for context blinding.
 - Transport frames, RLP nesting, ABI decoding, ABI JSON, and EIP-712 JSON have
   explicit default allocation budgets and configurable stricter limits.
 

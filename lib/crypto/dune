@@ -5,5 +5,4 @@
   evm-types
   zarith
   digestif
-  mirage-crypto-ec
-  mirage-crypto-blockchain))
+  mirage-crypto-secp256k1))

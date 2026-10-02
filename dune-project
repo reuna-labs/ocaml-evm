@@ -58,8 +58,7 @@
   (evm-types (= :version))
   (zarith (>= 1.13))
   (digestif (>= 1.2.0))
-  mirage-crypto-ec
-  mirage-crypto-blockchain))
+  mirage-crypto-secp256k1))
 
 (package
  (name evm-transaction)

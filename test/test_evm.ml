@@ -1,3 +1,8 @@
+(* Fixed entropy is for reproducible tests only. Applications must supply a
+   properly seeded Mirage RNG for native signing-context blinding. *)
+let () = Mirage_crypto_rng.set_default_generator
+    (Mirage_crypto_rng.create ~seed:(String.make 48 '\042') (module Mirage_crypto_rng.Fortuna))
+
 let get_ok = function
   | Ok x -> x
   | Error _ -> Alcotest.fail "unexpected Error"

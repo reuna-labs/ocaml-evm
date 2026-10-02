@@ -2,12 +2,13 @@
  (name test_evm)
  (package evm)
  (deps fixtures/transaction_vectors.json)
- (libraries evm alcotest qcheck-core qcheck-alcotest yojson zarith digestif))
+ (libraries mirage-crypto-rng evm alcotest qcheck-core qcheck-alcotest yojson zarith digestif))
 
 (test
  (name test_rpc)
  (package evm-rpc)
  (libraries
+  mirage-crypto-rng
   evm-types
   evm-abi
   evm-rpc
@@ -20,12 +21,12 @@
 (test
  (name test_rpc_unix)
  (package evm-rpc-unix)
- (libraries evm-rpc-unix alcotest uri))
+ (libraries mirage-crypto-rng evm-rpc-unix alcotest uri))
 
 (test
  (name test_rpc_websocket)
  (package evm-rpc-websocket)
- (libraries evm-types evm-rpc evm-rpc-websocket alcotest yojson zarith))
+ (libraries mirage-crypto-rng evm-types evm-rpc evm-rpc-websocket alcotest yojson zarith))
 
 (test
  (name test_rpc_faults)
@@ -33,6 +34,7 @@
  (enabled_if
   (= %{env:EVM_ENABLE_NETWORK_TESTS=0} 1))
  (libraries
+  mirage-crypto-rng
   evm-types
   evm-rpc
   evm-rpc-unix
