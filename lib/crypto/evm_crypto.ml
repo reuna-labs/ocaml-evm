@@ -52,12 +52,13 @@ let recover digest sig_ =
         Recovery.recover ~msg:(Evm_types.Hash.to_bytes digest) signature ~recid
       with
       | Error _ -> Error `Recovery_failed
-      | Ok point ->
-          Ok point)
+      | Ok point -> Ok point)
 
 let sign_digest ~nonce key digest =
   try
-    let signature, recid = Hardened.sign_recoverable ~nonce ~key (Evm_types.Hash.to_bytes digest) in
+    let signature, recid =
+      Hardened.sign_recoverable ~nonce ~key (Evm_types.Hash.to_bytes digest)
+    in
     if recid > 1 then Error `Recovery_failed
     else
       let bytes = Hardened.signature_to_octets signature in
@@ -69,6 +70,9 @@ let sign_digest ~nonce key digest =
   with Invalid_argument _ -> Error `Invalid_nonce
 
 let verify key digest signature =
-  match Hardened.signature_of_octets (Evm_types.Signature.to_bytes signature) with
+  match
+    Hardened.signature_of_octets (Evm_types.Signature.to_bytes signature)
+  with
   | Error _ -> false
-  | Ok signature -> Hardened.verify ~key signature (Evm_types.Hash.to_bytes digest)
+  | Ok signature ->
+      Hardened.verify ~key signature (Evm_types.Hash.to_bytes digest)

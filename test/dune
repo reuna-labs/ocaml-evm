@@ -2,7 +2,15 @@
  (name test_evm)
  (package evm)
  (deps fixtures/transaction_vectors.json)
- (libraries mirage-crypto-rng evm alcotest qcheck-core qcheck-alcotest yojson zarith digestif))
+ (libraries
+  mirage-crypto-rng
+  evm
+  alcotest
+  qcheck-core
+  qcheck-alcotest
+  yojson
+  zarith
+  digestif))
 
 (test
  (name test_rpc)
@@ -26,7 +34,14 @@
 (test
  (name test_rpc_websocket)
  (package evm-rpc-websocket)
- (libraries mirage-crypto-rng evm-types evm-rpc evm-rpc-websocket alcotest yojson zarith))
+ (libraries
+  mirage-crypto-rng
+  evm-types
+  evm-rpc
+  evm-rpc-websocket
+  alcotest
+  yojson
+  zarith))
 
 (test
  (name test_rpc_faults)

@@ -1,8 +1,4 @@
 (library
  (name evm_crypto)
  (public_name evm-crypto)
- (libraries
-  evm-types
-  zarith
-  digestif
-  mirage-crypto-secp256k1))
+ (libraries evm-types zarith digestif mirage-crypto-secp256k1))
