@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-project_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+project_root=$(CDPATH='' cd -- "$(dirname -- "$0")/.." && pwd)
 cd "$project_root"
 
 staging_root=$(mktemp -d /tmp/ocaml-evm-install.XXXXXX)

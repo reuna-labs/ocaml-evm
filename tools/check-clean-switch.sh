@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-project_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+project_root=$(CDPATH='' cd -- "$(dirname -- "$0")/.." && pwd)
 mirage_crypto_source=${MIRAGE_CRYPTO_SOURCE:-"$project_root/../../ports/ocaml/mirage-crypto"}
 digestif_source=${DIGESTIF_SOURCE:-"$project_root/../../ports/ocaml/digestif"}
 ocaml_package=${EVM_OCAML_PACKAGE:-ocaml-base-compiler.5.2.1}
