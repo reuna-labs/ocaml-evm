@@ -5,3 +5,7 @@
 (executable
  (name chain_id)
  (libraries evm-types evm-rpc evm-rpc-unix lwt.unix uri))
+
+(executable
+ (name sepolia_sign)
+ (libraries evm))

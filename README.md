@@ -85,6 +85,22 @@ development nodes and run the live cross-client matrix. This requires Docker:
 EVM_RUN_CONFORMANCE=1 ./tools/release-gate.sh
 ```
 
+Against public Sepolia nodes, with the **published** package rather than this
+checkout (installed from the Reuna opam overlay in a pinned container):
+
+```sh
+./tools/sepolia-check.sh
+```
+
+It signs an EIP-1559 transfer from a fresh key and submits it with
+`eth_sendRawTransaction`. Each node must answer "insufficient funds … want
+1260000000000001", which is gas × max fee + value exactly, so the envelope,
+every fee field and the value decoded as signed and the signature recovered.
+The same transfer signed for chain 1 must be refused as "invalid chain ID".
+Passed 2026-10-12 against reth 2.7.0 (publicnode) and a Geth node (drpc). It
+does not prove the node recovered the same sender as this library: that needs
+a funded key, so an accepted transaction returns this library's hash.
+
 `Evm.Crypto.sign_digest` deliberately requires a fresh 32-byte nonce supplied
 by the caller. An enclave or unikernel adapter should obtain it from its own
 trusted RNG and must never reuse it. See [SECURITY.md](SECURITY.md).
