@@ -35,6 +35,6 @@ applications should pin expected chain IDs and use `safe`/`finalized` or their
 own confirmation policy. Subscription reconnects deliberately surface gaps as
 `Need_resync` rather than pretending the new head extends the old chain.
 
-Please report vulnerabilities privately to the maintainers listed in the opam
-metadata. Include a reproducer when possible and do not open a public issue
-until a fix is available.
+Please report vulnerabilities privately to `security@reuna.io`. Include a
+reproducer when possible and do not open a public issue until a fix is
+available.
